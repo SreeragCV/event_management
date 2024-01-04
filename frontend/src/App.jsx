@@ -3,11 +3,11 @@ import RootLayout from "./pages/RootLayout";
 import HomePage from "./pages/HomePage";
 import EventPage from "./pages/EventPage";
 import EventDetailsPage from "./pages/EventDetailsPage";
-import NewEventPage from "./pages/NewEventPage";
+import NewEventPage, { action as newEventAction } from "./pages/NewEventPage";
 import EditEventPage from "./pages/EditEventPage";
 import EventRootLayout from "./pages/EventRootLayout";
 import { loader as eventsLoader } from "./pages/EventPage";
-import { loader as singleEventLoader } from "./pages/EventDetailsPage";
+import { loader as eventDetailLoader } from "./pages/EventDetailsPage";
 import Error from "./pages/Error";
 
 // Challenge / Exercise
@@ -46,11 +46,14 @@ const router = createBrowserRouter([
           { path: "", element: <EventPage />, loader: eventsLoader },
           {
             path: ":eventId",
-            element: <EventDetailsPage />,
-            loader: singleEventLoader,
+            id: "event-detail",
+            loader: eventDetailLoader,
+            children: [
+              { index: true, element: <EventDetailsPage /> },
+              { path: "edit", element: <EditEventPage /> },
+            ],
           },
-          { path: "new", element: <NewEventPage /> },
-          { path: ":eventId/edit", element: <EditEventPage /> },
+          { path: "new", element: <NewEventPage />, action: newEventAction },
         ],
       },
     ],

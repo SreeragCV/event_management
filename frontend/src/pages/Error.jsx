@@ -10,6 +10,8 @@ function Error() {
   let title = 'An Error Occurred!'
   let message = 'Something went wrong!'
 
+  console.log(error);
+
   if(error.status === 500){
     message = error.data.message
   }

@@ -1,7 +1,7 @@
-import { json, useLoaderData } from "react-router-dom";
+import { json, useRouteLoaderData } from "react-router-dom";
 import EventItem from "../components/EventItem.js";
 function EventDetailsPage() {
-  const data = useLoaderData();
+  const data = useRouteLoaderData('event-detail');
   const event = data.event;
 
   // const params = useParams();
@@ -44,10 +44,10 @@ export default EventDetailsPage;
 
 export async function loader({ request, params }) {
   const id = params.eventId;
-  const response = await fetch(`http://localhost:8080/eventWs/${id}`);
+  const response = await fetch(`http://localhost:8080/events/${id}`);
 
-  if(!response.ok){
-    throw json({message: 'Error fetching the event'}, {status: 500})
+  if (!response.ok) {
+    throw json({ message: "Error fetching the event" }, { status: 500 });
   }
 
   return response;
