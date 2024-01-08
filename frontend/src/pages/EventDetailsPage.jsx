@@ -59,10 +59,6 @@ export async function action({ request, params }) {
     method: request.method,
   });
 
-  if(response.status === 422){
-    return response;
-  }
-
   if (!response.ok) {
     throw json(
       { message: "some error occured in deleting the event" },

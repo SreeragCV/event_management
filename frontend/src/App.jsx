@@ -36,19 +36,23 @@ import Error from "./pages/Error";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <RootLayout />,
     errorElement: <Error />,
     children: [
       { index: true, element: <HomePage /> },
       {
-        path: "events",
+        path: 'events',
         element: <EventRootLayout />,
         children: [
-          { path: "", element: <EventPage />, loader: eventsLoader },
           {
-            path: ":eventId",
-            id: "event-detail",
+            index: true,
+            element: <EventPage />,
+            loader: eventsLoader,
+          },
+          {
+            path: ':eventId',
+            id: 'event-detail',
             loader: eventDetailLoader,
             children: [
               {
@@ -56,22 +60,32 @@ const router = createBrowserRouter([
                 element: <EventDetailsPage />,
                 action: deleteAction,
               },
-              { path: "edit", element: <EditEventPage /> },
+              {
+                path: 'edit',
+                element: <EditEventPage />,
+                action: newEventAction,
+              },
             ],
           },
-          { path: "new", element: <NewEventPage />, action: newEventAction },
+          {
+            path: 'new',
+            element: <NewEventPage />,
+            action: manipulateEventAction,
+          },
         ],
+      },
+      {
+        path: 'newsletter',
+        element: <NewsletterPage />,
+        action: newsletterAction,
       },
     ],
   },
 ]);
 
 function App() {
-  return (
-    <div>
-      <RouterProvider router={router}></RouterProvider>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
+
