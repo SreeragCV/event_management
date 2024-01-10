@@ -1,6 +1,10 @@
+import { useFetcher } from "react-router-dom";
 import classes from "./NewsletterSignup.module.css";
 
 function NewsletterSignup() {
+
+  const fetch = useFetcher()
+
   return (
     <form method="post" className={classes.newsletter}>
       <input
