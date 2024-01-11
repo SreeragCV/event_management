@@ -11,7 +11,7 @@ import EventRootLayout from "./pages/EventRootLayout";
 import { loader as eventsLoader } from "./pages/EventPage";
 import { loader as eventDetailLoader } from "./pages/EventDetailsPage";
 import Error from "./pages/Error";
-import NewsletterPage from "./pages/NewsLetter";
+import NewsletterPage, {action as newsletterAction} from "./pages/NewsLetter";
 import { action as manipulateEventAction } from "./components/EventForm";
 
 // Challenge / Exercise
@@ -79,7 +79,7 @@ const router = createBrowserRouter([
       {
         path: 'newsletter',
         element: <NewsletterPage />,
-        // action: newsletterAction,
+        action: newsletterAction,
       },
     ],
   },
