@@ -3,13 +3,12 @@ import RootLayout from "./pages/RootLayout";
 import HomePage from "./pages/HomePage";
 import EventPage from "./pages/EventPage";
 import EventDetailsPage, {
-  action as deleteEventAction,
+  action as deleteEventAction, loader as eventDetailLoader
 } from "./pages/EventDetailsPage";
 import NewEventPage from "./pages/NewEventPage";
 import EditEventPage from "./pages/EditEventPage";
 import EventRootLayout from "./pages/EventRootLayout";
 import { loader as eventsLoader } from "./pages/EventPage";
-import { loader as eventDetailLoader } from "./pages/EventDetailsPage";
 import Error from "./pages/Error";
 import NewsletterPage, {action as newsletterAction} from "./pages/NewsLetter";
 import { action as manipulateEventAction } from "./components/EventForm";
